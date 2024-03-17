@@ -1,46 +1,14 @@
 [TOC]
 
-# 项目介绍
-
-此项目是通过使用开源项目[clash（已跑路）](https://github.com/Dreamacro/clash)作为核心程序，再结合脚本实现简单的代理功能。<br>
-clash核心备份仓库[Clash-backup](https://github.com/Elegycloud/clash-for-linux-backup)
-
-主要是为了解决我们在服务器上下载GitHub等一些国外资源速度慢的问题。
-
-由于作者已经跑路，当前为Elegycloud进行备份，若有侵犯您的权利，请提交issues我会看到并删除仓库<br>
-clash for linux 备份(备份号：202311091510)。
-若喜欢本项目，请点个小星星！
-<br>
-
-# 使用须知
-
-- 运行本项目建议使用root用户，或者使用 sudo 提权。
-- 使用过程中如遇到问题，请优先查已有的 [issues](https://github.com/Elegycloud/clash-for-linux-backup/issues)。
-- 在进行issues提交前，请替换提交内容中是敏感信息（例如：订阅地址）。
-- 本项目是基于 [clash（已跑路）](https://github.com/Dreamacro/clash) 、[yacd](https://github.com/haishanh/yacd) 进行的配置整合，关于clash、yacd的详细配置请去原项目查看。
-- 此项目不提供任何订阅信息，请自行准备Clash订阅地址。
-- 运行前请手动更改`.env`文件中的`CLASH_URL`变量值，否则无法正常运行。
-- 当前在RHEL系列和Debian,Kali Linux,ubuntu以及Linux系统中测试过，其他系列可能需要适当修改脚本。
-- 支持 x86_64/aarch64 平台
-- 【注意：部分带有桌面端Linux系统的需要在浏览器设置代理！否则有可能无法使用！】
-- 【若系统代理无法使用，但是想要系统代理，请修改尝试修改start.sh中的端口后执行环境变量命令！】
-- 【还是无法使用请更换当前网络环境（也是其中一个因素！）】
-- 【谷歌，twitter，youtube等可能无法ping通，正常现象！】
-> **注意**：当你在使用此项目时，遇到任何无法独自解决的问题请优先前往 [Issues](https://github.com/Elegycloud/clash-for-linux-backup/issue) 寻找解决方法。由于空闲时间有限，后续将不再对Issues中 “已经解答”、“已有解决方案” 的问题进行重复性的回答。
-
-<br>
-
 # 使用教程
+
+> 适用于自建vps，直接copy/paste配置文件的情况，如果是订阅模式，请访问原始 Repo: https://github.com/Elegycloud/clash-for-linux-backup.git
 
 ## 下载项目
 
-下载项目
+编辑 `./temp/clash.yaml` 文件，粘贴个人vps配置
 
-```bash
-$ git clone https://github.com/Elegycloud/clash-for-linux-backup.git
-```
-
-进入到项目目录，编辑`.env`文件，修改变量`CLASH_URL`的值。
+进入到项目目录，编辑`.env`文件
 
 ```bash
 $ cd clash-for-linux
@@ -54,12 +22,6 @@ $ vim .env
 ## 启动程序
 
 直接运行脚本文件`start.sh`
-
-- 进入项目目录
-
-```bash
-$ cd clash-for-linux
-```
 
 - 运行启动脚本
 
@@ -95,9 +57,9 @@ $ proxy_on
 
 ```bash
 $ netstat -tln | grep -E '9090|789.'
-tcp        0      0 127.0.0.1:9090          0.0.0.0:*               LISTEN     
-tcp6       0      0 :::7890                 :::*                    LISTEN     
-tcp6       0      0 :::7891                 :::*                    LISTEN     
+tcp        0      0 127.0.0.1:9090          0.0.0.0:*               LISTEN
+tcp6       0      0 :::7890                 :::*                    LISTEN
+tcp6       0      0 :::7891                 :::*                    LISTEN
 tcp6       0      0 :::7892                 :::*                    LISTEN
 ```
 
@@ -188,5 +150,5 @@ $ proxy_off
 2. 部分用户在UI界面找不到代理节点，基本上是因为厂商提供的clash配置文件是经过base64编码的，且配置文件格式不符合clash配置标准。
 
    目前此项目已集成自动识别和转换clash配置文件的功能。如果依然无法使用，则需要通过自建或者第三方平台（不推荐，有泄露风险）对订阅地址转换。
-   
+
 3. 程序日志中出现`error: unsupported rule type RULE-SET`报错，解决方法查看官方[WIKI](https://github.com/Dreamacro/clash/wiki/FAQ#error-unsupported-rule-type-rule-set)
