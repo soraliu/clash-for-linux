@@ -4,6 +4,8 @@
 
 > 适用于自建vps，直接copy/paste配置文件的情况，如果是订阅模式，请访问原始 Repo: https://github.com/Elegycloud/clash-for-linux-backup.git
 
+如需添加更多 Linux 发行版支持，自行从 [Clash Premium](https://github.com/DustinWin/clash_singbox-tools/tree/main/ClashPremium-release) 复制 clash premium 文件 到 `bin` 目录
+
 ## 下载项目
 
 编辑 `./temp/clash.yaml` 文件，粘贴个人vps配置
